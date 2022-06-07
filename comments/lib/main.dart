@@ -5,8 +5,6 @@ import 'app/screens/comment_list_view.dart';
 
 void main() => runApp(const MyApp());
 
-const baseUrl = 'https://jsonplaceholder.typicode.com/comments/';
-
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
