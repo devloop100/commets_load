@@ -37,8 +37,10 @@ class _AddCommentViewState extends State<AddCommentView> {
     super.dispose();
   }
 
+  // called when the send button is pressed
   void _sendComment() async {
     try {
+      // check if the text is empty
       final text = _controller.text;
       if (text.isEmpty) {
         _showEnterCommentMessage();
@@ -56,6 +58,7 @@ class _AddCommentViewState extends State<AddCommentView> {
     }
   }
 
+  // called when the post is successfully sent
   void _success() {
     setState(() {
       postSendState = PostSendState.success;
@@ -64,6 +67,7 @@ class _AddCommentViewState extends State<AddCommentView> {
     });
   }
 
+  // called when the post is failed to send
   void _failure() {
     setState(() {
       postSendState = PostSendState.error;
@@ -75,6 +79,7 @@ class _AddCommentViewState extends State<AddCommentView> {
     setState(() {});
   }
 
+  // show a message to enter comment text if the text is empty
   void _showEnterCommentMessage() {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -89,16 +94,19 @@ class _AddCommentViewState extends State<AddCommentView> {
     );
   }
 
+  // called when the comment is successfully sent and the user confirms the message
   void _onConfirm() {
     Navigator.of(context).pop();
   }
 
+  // called when the message failed to send and the user tries again
   void _tryAgain() {
     setState(() {
       postSendState = PostSendState.idle;
     });
   }
 
+  // build the body according to the state of the post state
   Widget _buildBody() {
     switch (postSendState) {
       case PostSendState.idle:
