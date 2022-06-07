@@ -1,4 +1,4 @@
-/// Summarized information of a character.
+/// Summarized information of a comment.
 class CommentModel {
   CommentModel({
     required this.id,
