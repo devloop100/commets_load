@@ -1,4 +1,5 @@
 import 'package:comments/common/api/remote_api.dart';
+import 'package:comments/common/widgets/show_snackbar.dart';
 import 'package:comments/common/widgets/text_direction.dart';
 import 'package:flutter/material.dart';
 
@@ -43,7 +44,7 @@ class _AddCommentViewState extends State<AddCommentView> {
       // check if the text is empty
       final text = _controller.text;
       if (text.isEmpty) {
-        _showEnterCommentMessage();
+        showEnterCommentMessage(context, "please enter your comment");
         return;
       }
 
@@ -77,21 +78,6 @@ class _AddCommentViewState extends State<AddCommentView> {
   // update the state when text is change so the auto direction can be updated
   void _textUpdated() {
     setState(() {});
-  }
-
-  // show a message to enter comment text if the text is empty
-  void _showEnterCommentMessage() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: const Text("please enter your comment"),
-        behavior: SnackBarBehavior.floating,
-        duration: const Duration(seconds: 2),
-        margin: EdgeInsets.only(
-            bottom: MediaQuery.of(context).size.height / 2 - 100,
-            right: 20,
-            left: 20),
-      ),
-    );
   }
 
   // called when the comment is successfully sent and the user confirms the message
